@@ -1,0 +1,46 @@
+<div id="footer-post-container">
+  <div style="width:100%;overflow:hidden">
+  <div style="width:50%;float:left;text-align:center">
+      <% if (page.prev) { %>
+        <a href="<%- url_for(page.prev.path) %>" style="color:#fff"><i class="fas fa-angle-left"></i>&nbsp;上一篇</a>
+    <% } %>
+  </div>
+  <div style="width:50%;float:right;text-align:center">
+      <% if (page.next) { %>
+        <a href="<%- url_for(page.next.path) %>" style="color:#fff">下一篇&nbsp;<i class="fas fa-angle-right"></i>
+    <% } %>
+  </div>
+</div>
+  <div id="footer-post">
+    
+    <div id="nav-footer" style="display: none">
+      <ul>
+        <% for (var i in theme.nav) { %> 
+          <li><a href="<%- url_for(theme.nav[i]) %>"><%= __('nav.'+i).replace("nav.", "") %></a></li>
+        <% } %>
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+            <% if (page.encrypt == true) { %>
+            <%- toc(page.origin) %>
+        <% } else { %>
+            <%- toc(page.content) %>
+        <% } %>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <%- partial('_partial/post/share', { icon_class_name: 'fa-lg' }) %>
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> <%= __('post.mobile.menu') %></a>
+        <% if(page.toc) { %>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> <%= __('post.mobile.toc') %></a>
+        <% } %>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> <%= __('post.mobile.share') %></a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> <%= __('post.mobile.back_to_top') %></a>
+    </div>
+
+  </div>
+</div>

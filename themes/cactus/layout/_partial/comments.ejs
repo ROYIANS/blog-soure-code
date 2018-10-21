@@ -1,0 +1,27 @@
+<% if(page.comments){ %>
+    <div class="blog-post-comments">
+         <p  style="text-align:center"><button class="button" onclick="oc();">点击展开/关闭评论</button></p>
+        <% if(theme.disqus.enabled){ %>
+            <div class="blog-post-comments">
+                <div id="disqus_thread">
+                    <noscript><%= __('comments.no_js') %></noscript>
+                </div>
+            </div>
+        <% } %>
+        <% if(theme.valine.enable){ %>
+        <div class="vcomment" id="cmt" style="display:none;"></div>
+        <% } %>
+    </div>
+            <script>
+            let cmtflag = false;
+              function oc(){
+              if (cmtflag){
+              document.getElementById("cmt").style.display="none";
+                cmtflag = false;
+              }else{
+              document.getElementById("cmt").style.display="";
+                cmtflag = true;
+              }
+              }
+            </script>
+<% } %>

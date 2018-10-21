@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html<%= config.language ? " lang=" + config.language.substring(0, 2) : ""%>>
+<%- partial('_partial/head') %>
+<body class="max-width mx-auto px3 <%- theme.direction -%>" id="bd">
+
+      <div id="loading">
+        <div class="ldct">
+        <div class="loading-spinner"></div>
+        <div id="ld">LOADING...</div>
+      </div>
+      </div>
+
+        
+    <% if (is_post()) { %>
+      <%- partial('_partial/post/actions_desktop') %>
+    <% } %>
+    <div class="content index my4">
+        <% if (!is_post()) { %>
+          <%- partial('_partial/header') %>
+        <% } %>
+        <%- body %>
+    </div>
+    <% if (is_post()) { %>
+      <%- partial('_partial/post/actions_mobile') %>
+    <% } %>
+    <%- partial('_partial/footer') %>
+    <%- partial('_partial/styles') %>
+    <%- partial('_partial/scripts') %>
+    <%- css('css/comment') %>
+          <script>
+            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    document.getElementsByTagName("body")[0].style.backgroundImage='url("https://royians.cn/images/bg-mob.png")';
+}
+          </script>
+      <script defer="defer" async="async">
+  window.onload=function(){
+  if(typeof(localStorage.flag) == "undefined"){
+    localStorage.setItem("targetEncoding", "false");
+    translatePage();
+    localStorage.setItem("flag", "true");
+    }
+    if (currentEncoding) {
+          translateBody();
+        }
+  }
+</script>
+      </body>
+
+      
+</html>

@@ -1,0 +1,56 @@
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <%- partial('_partial/post/title', { post: page, index: false, class_name: 'posttitle' }) %>
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name"><% if (page.author) { %><%- page.author %><% } else { %><%- config.title %><% } %></span>
+      </span>
+      <%- partial('_partial/post/date', { post: page, class_name: 'postdate' }) %>
+            <div class="article-tag">
+  <span id="<%= page.abbrlink %>" class="leancloud-visitors" data-flag-title="<%= page.title %>"><i class="fa fa-fire"></i> <i class="leancloud-visitors-count" style="font-style: normal;">热度</i>℃</span>
+      </div>
+      <%- partial('_partial/post/tag') %>
+    </div>
+  </header>
+  <%- partial('_partial/post/gallery') %>
+    
+    
+    
+    
+  <div class="content" itemprop="articleBody">
+    
+    
+    <link href="/lib/card.css" rel="stylesheet" type="text/css" />
+	<!-- Card -->
+	<div class="movie-card" <% if(page.img) { %>style="background-image:url('<%- page.img %>');" <% } else { %>style="background-image:url('https://open.saintic.com/api/bingPic/');"<% } %>>
+		<div class="color-overlay">
+			<div class="movie-share">
+					<a class="movie-share__icon" href="#">
+						<i class="fa fa-heart"  title="喜欢"></i>
+					</a>
+					<a class="movie-share__icon" href="#">
+						<i class="fa fa-dollar-sign" title="打赏"></i>
+					</a>
+				</div>
+			<div class="movie-content">
+				<div class="movie-header">
+					<h1 class="movie-title">版权说明</h1>
+					<h4 class="movie-info"><%- page.title %></h4>
+				</div>
+				<p class="movie-desc">本文作者：<% if(page.author) { %><%- page.author %><% } else { %>小梦岛<% } %>。</p>
+                  <p class="movie-desc">本博客所有文章除特别声明外，<br>均采用 CC BY-NC-SA 4.0 许可协议。<br><br>转载请注明出处！</p>
+
+			</div>
+		</div>
+	</div>
+
+  <% if(page.media) { %>
+  <link rel="stylesheet" href="/lib/plyr/plyr.css">
+  <script src="/lib/plyr/plyr.js"></script>
+  <% } %>
+
+    
+    <%- page.content %>
+  </div>
+</article>
+<%- partial('_partial/comments') %>
