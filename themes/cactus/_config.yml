@@ -18,7 +18,6 @@ nav:
   about: /about/
   articles: /archives/
   search: /Search/
-  简/繁: javascript:translatePage();
 
 
 # Links to your social media accounts.

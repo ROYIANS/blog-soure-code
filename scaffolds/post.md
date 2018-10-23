@@ -8,4 +8,5 @@ author: 小梦岛
 media: false
 math: false
 img:
+password:
 ---
